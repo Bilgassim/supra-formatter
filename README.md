@@ -23,7 +23,20 @@ chmod +x main.py
 
 ## 🚀 Utilisation
 
-La syntaxe est simple :
+Supra-Formatter propose deux modes d'utilisation :
+
+### 1. Mode Interactif (Nouveau ✨)
+Lancez simplement l'outil sans argument pour être guidé par un menu :
+```bash
+python3 main.py
+```
+L'outil vous demandera :
+1. Le chemin du fichier source.
+2. Le format de sortie souhaité (via un menu 1, 2, 3).
+3. Le nom du fichier de sortie.
+
+### 2. Mode Commande (Automation)
+Pour une utilisation dans des scripts :
 ```bash
 python3 main.py <fichier_source> -f <format_cible> -o <fichier_sortie>
 ```
