@@ -1,8 +1,11 @@
 # 🚀 Supra-Formatter
 
+[![Web Version](https://img.shields.io/badge/Version-Web-cyan?style=for-the-badge&logo=googlechrome&logoColor=white)](https://Bilgassim.github.io/supra-formatter/)
+
 **Supra-Formatter** est un outil "méga-formateur" conçu pour les ingénieurs sécurité et administrateurs système. Il permet de jongler entre les différents formats de listes SSH les plus répandus sans se soucier du format source.
 
-L'outil **détecte automatiquement** le format de vos fichiers d'entrée (Standard, CSV ou GoSSH) et les convertit instantanément vers le format de votre choix.
+> [!TIP]
+> **Pas envie d'installer Python ?** Utilisez la [version web interactive](https://Bilgassim.github.io/supra-formatter/) directement dans votre navigateur !
 
 ## 🌟 Fonctionnalités
 
