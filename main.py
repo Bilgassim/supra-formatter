@@ -2,26 +2,44 @@
 import argparse
 import sys
 import os
+import re
 from core.converter import SupraConverter
 
-BANNER = r"""
-\033[36m
+# Tentative d'import de readline pour l'auto-complétion (Linux/macOS)
+try:
+    import readline
+    readline.parse_and_bind("tab: complete")
+    # Configuration pour compléter les noms de fichiers
+    readline.set_completer_delims(' \t\n=')
+except ImportError:
+    # Readline n'est pas disponible sur toutes les plateformes (ex: Windows sans extension)
+    pass
+
+# Style de la bannière : Art ASCII en raw string + Couleurs
+BANNER_COLOR = "\033[36m"
+BANNER_RESET = "\033[0m"
+BANNER_ART = r"""
   ____  _   _ ____  ____      _    
  / ___|| | | |  _ \|  _ \    / \   
  \___ \| | | | |_) | |_) |  / _ \  
   ___) | |_| |  __/|  _ <  / ___ \ 
  |____/ \___/|_|   |_| \_\/_/   \_\
-\033[0m
- \033[90m[+] version 1.1.0 | Interactive Mega-Formatter\033[0m
- \033[90m[+] author: Bilgassim | Bilgassim/supra-formatter\033[0m
 """
+
+INFO_TEXT = "\033[90m [+] version 1.2.0 | Advanced Interactive Mega-Formatter\n [+] author: Bilgassim | Bilgassim/supra-formatter\033[0m"
+
+BANNER = BANNER_COLOR + BANNER_ART + BANNER_RESET + INFO_TEXT
 
 def interactive_mode():
     """Lance le menu interactif pour guider l'utilisateur."""
-    print("\n\033[33m--- Mode Interactif ---\033[0m")
+    print("\n\033[33m--- Mode Interactif (Tab pour compléter les chemins) ---\033[0m")
     
-    # 1. Demander le fichier d'entrée
-    input_file = input("[?] Chemin du fichier source (ex: list.txt) : ").strip()
+    # 1. Demander le fichier d'entrée (avec support auto-completion)
+    try:
+        input_file = input("[?] Chemin du fichier source : ").strip()
+    except EOFError:
+        return
+
     if not os.path.exists(input_file):
         print(f"\033[31m[-] Erreur: Le fichier '{input_file}' n'existe pas.\033[0m")
         return
@@ -67,12 +85,10 @@ def run_conversion(input_file, output_file, target_format):
 def main():
     print(BANNER)
     
-    # Si aucun argument n'est passé, on lance le mode interactif
     if len(sys.argv) == 1:
         interactive_mode()
         return
 
-    # Sinon, on utilise le mode commande classique (pour les scripts/automation)
     parser = argparse.ArgumentParser(
         description="Supra-Formatter: L'outil ultime de conversion de listes SSH."
     )
