@@ -1,4 +1,5 @@
 import re
+import os
 
 class SupraConverter:
     """Cœur de la logique de conversion pour Supra-Formatter."""
@@ -50,6 +51,11 @@ class SupraConverter:
         """Convertit le fichier d'entrée vers le format cible."""
         if target_format not in self.FORMATS:
             raise ValueError(f"Format cible non supporté: {target_format}")
+
+        # Création automatique du dossier de destination s'il n'existe pas
+        output_dir = os.path.dirname(output_file)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
 
         count = 0
         with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
