@@ -4,7 +4,20 @@ import sys
 import os
 from core.converter import SupraConverter
 
+BANNER = """
+\033[36m
+  ____  _   _ ____  ____      _       _____ ___  ____  __  __   _  _____ _____ _____ ____  
+ / ___|| | | |  _ \|  _ \    / \     |  ___/ _ \|  _ \|  \/  | / \|_   _|_   _| ____|  _ \ 
+ \___ \| | | | |_) | |_) |  / _ \    | |_ | | | | |_) | |\/| |/ _ \ | |   | | |  _| | |_) |
+  ___) | |_| |  __/|  _ <  / ___ \   |  _|| |_| |  _ <| |  | / ___ \| |   | | | |___|  _ < 
+ |____/ \___/|_|   |_| \_\/_/   \_\  |_|   \___/|_| \_\_|  |/_/   \_\_|   |_| |_____|_| \_\
+\033[0m
+ \033[90m[+] version 1.0.0 | Mega-Formatter for SSH lists\033[0m
+ \033[90m[+] author: Bilgassim | Bilgassim/supra-formatter\033[0m
+"""
+
 def main():
+    print(BANNER)
     parser = argparse.ArgumentParser(
         description="Supra-Formatter: L'outil ultime de conversion de listes SSH."
     )
